@@ -1,38 +1,109 @@
-.App {
-  text-align: center;
+/* Container principal */
+.app-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #f7f7f7;
+    text-align: center;
+    padding: 20px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Título */
+.title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 30px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* Formulário de upload */
+.upload-form {
+    margin-bottom: 30px;
 }
 
-.App-link {
-  color: #61dafb;
+/* Input de arquivo */
+.file-input {
+    padding: 10px;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Botão de upload */
+.upload-button {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.upload-button:hover {
+    background-color: #45a049;
+}
+
+/* Mensagens */
+.message {
+    font-size: 1.2rem;
+    color: #ff5733;
+    margin-top: 10px;
+}
+
+/* Lista de botões de áudio */
+.audio-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+/* Botões de áudio */
+.audio-button {
+    padding: 15px 30px;
+    font-size: 1.5rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    width: auto;
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.akatsuki-image img {
+    width: 500px;
+    height: auto;
+    margin-bottom: 30px;
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 2rem;
+    }
+
+    .audio-button {
+        width: 150px;
+    }
 }
