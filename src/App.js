@@ -17,7 +17,7 @@ function App() {
                 setAudios(data.audios);
 
                 const colors = data.audios.map(() => getRandomColor());
-                setAudioColors(colors);
+                setAudioColors(colors); 
 
                 setLoading(false);
             } catch (error) {
