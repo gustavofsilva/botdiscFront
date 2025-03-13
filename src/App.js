@@ -127,7 +127,7 @@ function App() {
                             style={{ backgroundColor: audioColors[index] }}
                             onClick={() => playAudio(audio)}
                         >
-                            Tocar {audio}
+                            {audio}
                         </button>
                     ))}
                 </div>
