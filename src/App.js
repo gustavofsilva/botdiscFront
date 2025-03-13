@@ -8,18 +8,25 @@ function App() {
     const [message, setMessage] = useState("");
     const [audioColors, setAudioColors] = useState([]);
 
-    // Buscar a lista de áudios do backend
+    const BASE_URL = "https://botdisc-t53r.onrender.com";
+
     useEffect(() => {
         const fetchAudios = async () => {
             try {
-                const response = await fetch("https://botdisc-t53r.onrender.com/audios");
+                const response = await fetch(`${BASE_URL}/audios`);
                 const data = await response.json();
-                setAudios(data.audios); 
 
-                const colors = data.audios.map(() => getRandomColor());
-                setAudioColors(colors); 
+                if (data.audios && Array.isArray(data.audios)) {
+                    setAudios(data.audios); 
 
-                setLoading(false);
+                    const colors = data.audios.map(() => getRandomColor());
+                    setAudioColors(colors);
+
+                    setLoading(false);
+                } else {
+                    console.error("Formato de dados inesperado:", data);
+                    setLoading(false);
+                }
             } catch (error) {
                 console.error("Erro ao carregar os áudios:", error);
                 setLoading(false);
@@ -32,7 +39,7 @@ function App() {
     // Enviar comando para tocar o áudio no bot
     const playAudio = async (audioFile) => {
         try {
-            await fetch("https://botdisc-t53r.onrender.com/play", {
+            await fetch(`${BASE_URL}/play`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -59,11 +66,13 @@ function App() {
             return;
         }
 
+        console.log("Arquivo selecionado:", selectedAudio); // Verifique se o arquivo é válido
+
         const formData = new FormData();
         formData.append("audio", selectedAudio);
 
         try {
-            const response = await fetch("https://botdisc-t53r.onrender.com/upload", {
+            const response = await fetch(`${BASE_URL}/upload`, {
                 method: "POST",
                 body: formData,
             });
@@ -73,7 +82,7 @@ function App() {
 
             // Atualizar a lista de áudios após o upload
             if (data.message.includes("sucesso")) {
-                const updatedAudios = await fetch("https://botdisc-t53r.onrender.com/audios");
+                const updatedAudios = await fetch(`${BASE_URL}/audios`);
                 const updatedData = await updatedAudios.json();
                 setAudios(updatedData.audios);
             }
@@ -127,7 +136,7 @@ function App() {
                             style={{ backgroundColor: audioColors[index] }}
                             onClick={() => playAudio(audio)}
                         >
-                            {audio}
+                            {audio.name} {/* Exibindo o nome do áudio */}
                         </button>
                     ))}
                 </div>
