@@ -14,7 +14,7 @@ function App() {
             try {
                 const response = await fetch("https://botdisc-t53r.onrender.com/audios");
                 const data = await response.json();
-                setAudios(data.audios);
+                setAudios(data.audios); 
 
                 const colors = data.audios.map(() => getRandomColor());
                 setAudioColors(colors); 
