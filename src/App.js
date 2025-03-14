@@ -8,7 +8,7 @@ function App() {
     const [message, setMessage] = useState("");
     const [audioColors, setAudioColors] = useState([]);
 
-    const BASE_URL = "https://two-windows-wink.loca.lt";
+    const BASE_URL = "https://beige-schools-kiss.loca.lt";
 
     useEffect(() => {
         const fetchAudios = async () => {
