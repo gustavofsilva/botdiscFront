@@ -8,16 +8,22 @@ function App() {
     const [message, setMessage] = useState("");
     const [audioColors, setAudioColors] = useState([]);
 
-    const BASE_URL = "https://botdisc-t53r.onrender.com";
+    const BASE_URL = "https://two-windows-wink.loca.lt";
 
     useEffect(() => {
         const fetchAudios = async () => {
             try {
-                const response = await fetch(`${BASE_URL}/audios`);
+                const response = await fetch(`${BASE_URL}/audios`, {
+                    method: 'GET', // Ou 'POST', dependendo do tipo de requisição
+                    headers: {
+                        'Tunnel-Password': '187.89.237.73', // Passando a senha no cabeçalho
+                        'Content-Type': 'application/json',
+                    },
+                });
                 const data = await response.json();
 
                 if (data.audios && Array.isArray(data.audios)) {
-                    setAudios(data.audios); 
+                    setAudios(data.audios);
 
                     const colors = data.audios.map(() => getRandomColor());
                     setAudioColors(colors);
@@ -43,7 +49,8 @@ function App() {
             await fetch(`${BASE_URL}/play`, {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    'Tunnel-Password': '187.89.237.73',
                 },
                 body: JSON.stringify({ audioFile })
             });
@@ -76,6 +83,7 @@ function App() {
             const response = await fetch(`${BASE_URL}/upload`, {
                 method: "POST",
                 body: formData,
+                'Tunnel-Password': '187.89.237.73',
             });
 
             const data = await response.json();
@@ -83,7 +91,13 @@ function App() {
 
             // Atualizar a lista de áudios após o upload
             if (data.message.includes("sucesso")) {
-                const updatedAudios = await fetch(`${BASE_URL}/audios`);
+                const updatedAudios = await fetch(`${BASE_URL}/audios`, {
+                    method: 'GET', // Ou 'POST', dependendo do tipo de requisição
+                    headers: {
+                        'Tunnel-Password': '187.89.237.73', // Passando a senha no cabeçalho
+                        'Content-Type': 'application/json',
+                    },
+                });
                 const updatedData = await updatedAudios.json();
                 setAudios(updatedData.audios);
             }
