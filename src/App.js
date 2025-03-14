@@ -8,15 +8,14 @@ function App() {
     const [message, setMessage] = useState("");
     const [audioColors, setAudioColors] = useState([]);
 
-    const BASE_URL = "https://ripe-moose-ask.loca.lt";
+    const BASE_URL = "https://botdisc-t53r.onrender.com";
 
     useEffect(() => {
         const fetchAudios = async () => {
             try {
                 const response = await fetch(`${BASE_URL}/audios`, {
-                    method: 'GET', // Ou 'POST', dependendo do tipo de requisição
+                    method: 'GET', 
                     headers: {
-                        'Tunnel-Password': '187.89.237.73', // Passando a senha no cabeçalho
                         'Content-Type': 'application/json',
                     },
                 });
@@ -50,7 +49,6 @@ function App() {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    'Tunnel-Password': '187.89.237.73',
                 },
                 body: JSON.stringify({ audioFile })
             });
@@ -83,7 +81,6 @@ function App() {
             const response = await fetch(`${BASE_URL}/upload`, {
                 method: "POST",
                 body: formData,
-                'Tunnel-Password': '187.89.237.73',
             });
 
             const data = await response.json();
@@ -94,7 +91,6 @@ function App() {
                 const updatedAudios = await fetch(`${BASE_URL}/audios`, {
                     method: 'GET', // Ou 'POST', dependendo do tipo de requisição
                     headers: {
-                        'Tunnel-Password': '187.89.237.73', // Passando a senha no cabeçalho
                         'Content-Type': 'application/json',
                     },
                 });
