@@ -39,6 +39,7 @@ function App() {
     // Enviar comando para tocar o áudio no bot
     const playAudio = async (audioFile) => {
         try {
+            console.log("Tocando áudio:", audioFile);
             await fetch(`${BASE_URL}/play`, {
                 method: "POST",
                 headers: {
@@ -46,7 +47,7 @@ function App() {
                 },
                 body: JSON.stringify({ audioFile })
             });
-            setMessage(`Tocando ${audioFile}`);
+            setMessage(`Tocando ${audioFile.name}`);
         } catch (error) {
             console.error("Erro ao enviar o comando de áudio:", error);
             setMessage("Erro ao tentar tocar o áudio.");
