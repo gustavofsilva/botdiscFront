@@ -8,7 +8,7 @@ function App() {
     const [message, setMessage] = useState("");
     const [audioColors, setAudioColors] = useState([]);
 
-    const BASE_URL = "https://botdisc-t53r.onrender.com";
+    const BASE_URL = "https://botdisc-t53r.onrender.com"; 
 
     useEffect(() => {
         const fetchAudios = async () => {
