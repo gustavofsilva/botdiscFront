@@ -7,7 +7,7 @@ function App() {
   return (
     <div>
 
-      <Routes>
+      <Routes> 
         <Route path="/" element={<Navigate to="/mesasom" />} />
         <Route path="/photos" element={<Photos />} />
         <Route path="/mesasom" element={<MesaSom />} />
