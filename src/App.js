@@ -7,7 +7,6 @@ function App() {
   return (
     <div>
 
-      {/* Defina as rotas */}
       <Routes>
         <Route path="/" element={<Navigate to="/mesasom" />} />
         <Route path="/photos" element={<Photos />} />
