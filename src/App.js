@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route, Navigate  } from 'react-router-dom';
 import Photos from './photos';
 import MesaSom from './mesasom';
 
@@ -9,7 +9,7 @@ function App() {
 
       {/* Defina as rotas */}
       <Routes>
-        <Route path="/" element={<h2>Bem-vindo à página inicial!</h2>} />
+        <Route path="/" element={<Navigate to="/mesasom" />} />
         <Route path="/photos" element={<Photos />} />
         <Route path="/mesasom" element={<MesaSom />} />
       </Routes>
