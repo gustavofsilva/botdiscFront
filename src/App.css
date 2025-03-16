@@ -98,6 +98,23 @@ body {
     margin-bottom: 30px;
 }
 
+.photo-item img {
+    max-width: 200px;
+    height: auto;
+    border-radius: 8px;
+}
+.photo-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.photo {
+    width: 200px;
+    height: auto;
+    object-fit: cover;
+}
+
 @media (max-width: 768px) {
     .title {
         font-size: 2rem;
